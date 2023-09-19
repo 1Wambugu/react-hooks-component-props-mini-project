@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Article from './Article';
 
-function ArticleList({ articles }) {
+function ArticleList(props) {
+  const { articles } = props;
+
   return (
     <main>
       {articles.map((article, index) => (
@@ -10,12 +13,20 @@ function ArticleList({ articles }) {
           title={article.title}
           date={article.date}
           preview={article.preview}
-          readingTime={article.readingTime}
         />
       ))}
     </main>
   );
 }
 
-export default ArticleList;
+ArticleList.propTypes = {
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      preview: PropTypes.string.isRequired,
+    })
+  ),
+};
 
+export default ArticleList;

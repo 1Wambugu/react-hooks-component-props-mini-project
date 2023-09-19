@@ -1,17 +1,18 @@
 import React from 'react';
-import myImage from '../images/demo.png';
+import logo from '../assets/demo.png'; // Import the logo image
 
-function About() {
+function About(props) {
+  const { imageSrc, aboutText } = props;
+
   return (
     <aside>
-      <img src={myImage} alt="Blog Logo" />
-      <p>About text for the blog goes here.</p>
+      <img src={imageSrc || logo} alt="blog logo" />
+      <p>{aboutText}</p>
     </aside>
   );
 }
 
 export default About;
-
 
 
 
